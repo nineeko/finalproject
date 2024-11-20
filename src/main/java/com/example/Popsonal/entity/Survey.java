@@ -1,13 +1,12 @@
 package com.example.Popsonal.entity;
-import java.util.Date; // java.util.Date 임포트
 
 import lombok.Getter;
-
+import lombok.Setter;
 import jakarta.persistence.*;
 
 @Getter
+@Setter
 @Entity
-
 public class Survey {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +15,9 @@ public class Survey {
     @Column(name = "S_CATEGORY", length = 50)
     private String sCategory;
 
-    // Getters and Setters
+    @ManyToOne
+    @JoinColumn(name = "C_SID")
+    private Customers customer;
 
     public Long getSNo() {
         return sNo;
@@ -32,5 +33,13 @@ public class Survey {
 
     public void setSCategory(String sCategory) {
         this.sCategory = sCategory;
+    }
+
+    public Customers getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customers customer) {
+        this.customer = customer;
     }
 }

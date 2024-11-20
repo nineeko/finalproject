@@ -25,7 +25,7 @@ public class PopupstoreService {
     }
 
     public List<Popupstore> getPopupStoresByCategoryName(String categoryName) {
-        return popupStoreRepository.findByCategoryCategoryName(categoryName); // 카테고리 이름으로 검색
+        return popupStoreRepository.findByCategory_CategoryName(categoryName); // 카테고리 이름으로 검색
     }
     // 팝업스토어 생성
     public Popupstore createPopupStore(Popupstore popupStore) {

@@ -1,13 +1,13 @@
 package com.example.Popsonal.entity;
-import java.util.Date; // java.util.Date 임포트
 
 import lombok.Getter;
+import lombok.Setter;
 
 import jakarta.persistence.*;
 
 @Getter
+@Setter
 @Entity
-
 public class Customers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,11 @@ public class Customers {
     @Column(name = "C_AGE")
     private Integer cAge;
 
-    // Getters and Setters
+    @Column(name = "C_LOGINID", length = 50)
+    private String cLoginId;
+
+    @Column(name = "C_PASSWORD", length = 50)
+    private String cPassword;
 
     public Long getCSid() {
         return cSid;

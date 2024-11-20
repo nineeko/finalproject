@@ -13,6 +13,6 @@ public interface PopupstoreRepository extends JpaRepository<Popupstore, Long> {
     List<Popupstore> findByPName(String name);
 
     // 카테고리 이름으로 팝업스토어 검색
-    List<Popupstore> findByCategoryCategoryName(String categoryName);
+    List<Popupstore> findByCategory_CategoryName(String categoryName);
 }
 
