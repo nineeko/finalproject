@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 @Entity
 
 public class Survey_responses {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long responseId;

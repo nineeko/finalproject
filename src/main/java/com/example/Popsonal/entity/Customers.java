@@ -31,6 +31,17 @@ public class Customers {
     @Column(name = "C_PASSWORD", length = 50)
     private String cPassword;
 
+
+    @Column(name = "C_CATEGORY", length = 50)
+    private String cCategory;
+
+    public String getcCategory() {return cCategory;}
+
+    public void setcCategory(String cCategory) {this.cCategory = cCategory;}
+
+
+
+
     public Long getCSid() {
         return cSid;
     }
