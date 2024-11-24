@@ -1,8 +1,8 @@
 package com.example.Popsonal.controller;
 
 
+import com.example.Popsonal.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,20 +19,19 @@ import com.example.Popsonal.dto.LoginRequest;
 public class UserController {
 
     @Autowired
-    private CustomerRepository customerRepository;
+    private CustomerService customerService;
 
-    @PostMapping("/register")
-    public ResponseEntity<Void> registerUser(@RequestBody Customers user) {
 
-        customerRepository.save(user);
-        return ResponseEntity.ok().build();
+
+
+    @PostMapping("/register") //엔드포인트
+
+    public ResponseEntity<Void> registerMember(@RequestBody UserResponse userResponse) {
+        System.out.println("회원 등록 요청: " + userResponse);
+        customerService.save(userResponse);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<UserResponse> loginUser(@RequestBody LoginRequest loginRequest) {
-        // 로그인 로직 (DB에서 사용자 확인)
-        UserResponse userResponse = new UserResponse();
-        // 로그인 성공 시 userResponse에 데이터 설정
-        return ResponseEntity.ok(userResponse);
-    }
+
 }
+

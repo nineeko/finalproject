@@ -1,84 +1,45 @@
 package com.example.Popsonal.entity;
 
+import com.example.Popsonal.dto.UserResponse;
 import lombok.Getter;
 import lombok.Setter;
 
 import jakarta.persistence.*;
+import org.apache.catalina.User;
 
 @Getter
 @Setter
 @Entity
 public class Customers {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_sid_seq")
+    @SequenceGenerator(name = "customer_sid_seq", sequenceName = "customer_sid_seq", allocationSize = 1)
     private Long cSid;
 
     @Column(name = "C_NAME", length = 50)
-    private String cName;
+    private String CName;
 
     @Column(name = "C_PHONE", length = 50)
-    private String cPhone;
-
-    @Column(name = "C_gender", length = 10)
-    private String cGender;
-
-    @Column(name = "C_AGE")
-    private Integer cAge;
+    private String CPhone;
 
     @Column(name = "C_LOGINID", length = 50)
-    private String cLoginId;
+    private String CLoginId;
 
     @Column(name = "C_PASSWORD", length = 50)
-    private String cPassword;
-
+    private String CPassword;
 
     @Column(name = "C_CATEGORY", length = 50)
-    private String cCategory;
+    private String CCategory;
 
-    public String getcCategory() {return cCategory;}
-
-    public void setcCategory(String cCategory) {this.cCategory = cCategory;}
-
-
-
-
-    public Long getCSid() {
-        return cSid;
+    public static Customers toCustomers(UserResponse userResponse) {
+        Customers customers = new Customers();
+        customers.setCLoginId(userResponse.getLoginId());
+        customers.setCPassword(userResponse.getPassword());
+        customers.setCName(userResponse.getName());
+        customers.setCPhone(userResponse.getPhone());
+        //customers.setCCategory(UserResponse.getCategory());
+        return customers;
     }
 
-    public void setCSid(Long cSid) {
-        this.cSid = cSid;
-    }
-
-    public String getCName() {
-        return cName;
-    }
-
-    public void setCName(String cName) {
-        this.cName = cName;
-    }
-
-    public String getCPhone() {
-        return cPhone;
-    }
-
-    public void setCPhone(String cPhone) {
-        this.cPhone = cPhone;
-    }
-
-    public String getCGender() {
-        return cGender;
-    }
-
-    public void setCGender(String cGender) {
-        this.cGender = cGender;
-    }
-
-    public Integer getCAge() {
-        return cAge;
-    }
-
-    public void setCAge(Integer cAge) {
-        this.cAge = cAge;
-    }
 }

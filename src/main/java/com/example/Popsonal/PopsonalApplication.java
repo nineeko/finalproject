@@ -1,4 +1,4 @@
-package com.example.Popsonal.util;
+package com.example.Popsonal;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

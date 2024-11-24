@@ -1,31 +1,31 @@
 package com.example.Popsonal.dto;
 
+
+import com.example.Popsonal.entity.Customers;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+
 public class UserResponse {
-    private Long cSid;
-    private String cName;
+    private String loginId;    // 사용자 ID
+    private String password;    // 사용자 비밀번호
+    private String Name;      // 사용자 이름
+    private String phone;       // 사용자 전화번호
 
-    public UserResponse() {
+    public static UserResponse touserResponse(Customers customers) {
+        UserResponse userResponse = new UserResponse();
+        userResponse.setLoginId(customers.getCLoginId());
+        userResponse.setPassword(customers.getCPassword());
+        userResponse.setName(customers.getCName());
+        userResponse.setPhone(customers.getCPhone());
+        return userResponse;
     }
 
-    public UserResponse(Long cSid, String cName) {
-        this.cSid = cSid;
-        this.cName = cName;
-    }
 
-    // Getters와 Setters
-    public Long getCSid() {
-        return cSid;
-    }
-
-    public void setCSid(Long cSid) {
-        this.cSid = cSid;
-    }
-
-    public String getCName() {
-        return cName;
-    }
-
-    public void setCName(String cName) {
-        this.cName = cName;
-    }
 }
