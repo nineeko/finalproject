@@ -39,18 +39,34 @@ public class Customers {
     @Column(name = "C_CATEGORY3", length = 50)
     private String CCategory3;
 
-
-    public static Customers toCustomers(UserResponse userResponse) {
-        Customers customers = new Customers();
-        customers.setCLoginId(userResponse.getLoginId());
-        customers.setCPassword(userResponse.getPassword());
-        customers.setCName(userResponse.getName());
-        customers.setCPhone(userResponse.getPhone());
-        customers.setCCategory1(userResponse.getCategory1());
-        customers.setCCategory2(userResponse.getCategory2());
-        customers.setCCategory3(userResponse.getCategory3());
-        customers.setCSid(userResponse.getSid());
-        return customers;
+    // 로그인용 생성자
+    public Customers(String CLoginId, String CPassword) {
+        this.CLoginId = CLoginId;
+        this.CPassword = CPassword;
     }
 
+    // 회원가입용 생성자
+    public Customers(String CLoginId, String CPassword, String CName, String CPhone,
+                     String CCategory1, String CCategory2, String CCategory3) {
+        this.CLoginId = CLoginId;
+        this.CPassword = CPassword;
+        this.CName = CName;
+        this.CPhone = CPhone;
+        this.CCategory1 = CCategory1;
+        this.CCategory2 = CCategory2;
+        this.CCategory3 = CCategory3;
+    }
+
+    // UserResponse를 Customers 객체로 변환하는 메서드
+    public static Customers toCustomers(UserResponse userResponse) {
+        return new Customers(
+                userResponse.getLoginId(),
+                userResponse.getPassword(),
+                userResponse.getName(),
+                userResponse.getPhone(),
+                userResponse.getCategory1(),
+                userResponse.getCategory2(),
+                userResponse.getCategory3()
+        );
+    }
 }

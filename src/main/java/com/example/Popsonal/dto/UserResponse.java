@@ -15,7 +15,7 @@ import lombok.ToString;
 public class UserResponse {
     private String loginId;    // 사용자 ID
     private String password;    // 사용자 비밀번호
-    private String Name;      // 사용자 이름
+    private String name;      // 사용자 이름
     private String phone;       // 사용자 전화번호
     private String category1;
     private String category2;
@@ -31,6 +31,7 @@ public class UserResponse {
         userResponse.setCategory1(customers.getCCategory1());
         userResponse.setCategory2(customers.getCCategory2());
         userResponse.setCategory3(customers.getCCategory3());
+        userResponse.setSid(customers.getCSid());
         return userResponse;
     }
 
