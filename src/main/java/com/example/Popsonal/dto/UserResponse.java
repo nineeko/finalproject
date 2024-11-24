@@ -17,6 +17,10 @@ public class UserResponse {
     private String password;    // 사용자 비밀번호
     private String Name;      // 사용자 이름
     private String phone;       // 사용자 전화번호
+    private String category1;
+    private String category2;
+    private String category3;
+    private Long sid;
 
     public static UserResponse touserResponse(Customers customers) {
         UserResponse userResponse = new UserResponse();
@@ -24,6 +28,9 @@ public class UserResponse {
         userResponse.setPassword(customers.getCPassword());
         userResponse.setName(customers.getCName());
         userResponse.setPhone(customers.getCPhone());
+        userResponse.setCategory1(customers.getCCategory1());
+        userResponse.setCategory2(customers.getCCategory2());
+        userResponse.setCategory3(customers.getCCategory3());
         return userResponse;
     }
 

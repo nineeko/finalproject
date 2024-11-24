@@ -15,7 +15,8 @@ public class Customers {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_sid_seq")
     @SequenceGenerator(name = "customer_sid_seq", sequenceName = "customer_sid_seq", allocationSize = 1)
-    private Long cSid;
+    @Column(name = "C_SID")
+    private Long CSid;
 
     @Column(name = "C_NAME", length = 50)
     private String CName;
@@ -45,7 +46,10 @@ public class Customers {
         customers.setCPassword(userResponse.getPassword());
         customers.setCName(userResponse.getName());
         customers.setCPhone(userResponse.getPhone());
-        //customers.setCCategory(UserResponse.getCategory());
+        customers.setCCategory1(userResponse.getCategory1());
+        customers.setCCategory2(userResponse.getCategory2());
+        customers.setCCategory3(userResponse.getCategory3());
+        customers.setCSid(userResponse.getSid());
         return customers;
     }
 

@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customers, Long> {
     Optional<Customers>  findByCLoginIdAndCPassword(String cLoginId, String cPassword);
-
+    Optional<Customers> findByCSid(Long CSid);
 
 
 }
