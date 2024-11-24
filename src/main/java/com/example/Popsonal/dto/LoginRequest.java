@@ -1,18 +1,19 @@
 package com.example.Popsonal.dto;
 
-public class LoginRequest {
-    private String loginId;
+import com.example.Popsonal.entity.Customers;
+
+public class LoginRequest { private String loginId;
     private String password;
+    private String name;
 
-    public LoginRequest() {
+    public static UserResponse touserResponse(Customers customers) {
+        UserResponse response = new UserResponse();
+        response.setLoginId(customers.getCLoginId());
+        response.setName(customers.getCName());
+        return response;
     }
 
-    public LoginRequest(String loginId, String password) {
-        this.loginId = loginId;
-        this.password = password;
-    }
-
-    // Getters와 Setters
+    // Getter & Setter
     public String getLoginId() {
         return loginId;
     }
@@ -27,5 +28,13 @@ public class LoginRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -29,8 +29,15 @@ public class Customers {
     @Column(name = "C_PASSWORD", length = 50)
     private String CPassword;
 
-    @Column(name = "C_CATEGORY", length = 50)
-    private String CCategory;
+    @Column(name = "C_CATEGORY1", length = 50)
+    private String CCategory1;
+
+    @Column(name = "C_CATEGORY2", length = 50)
+    private String CCategory2;
+
+    @Column(name = "C_CATEGORY3", length = 50)
+    private String CCategory3;
+
 
     public static Customers toCustomers(UserResponse userResponse) {
         Customers customers = new Customers();

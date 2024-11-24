@@ -15,9 +15,6 @@ public class Survey {
     @Column(name = "S_CATEGORY", length = 50)
     private String sCategory;
 
-    @ManyToOne
-    @JoinColumn(name = "C_SID")
-    private Customers customer;
 
     public Long getSNo() {
         return sNo;
@@ -35,11 +32,6 @@ public class Survey {
         this.sCategory = sCategory;
     }
 
-    public Customers getCustomer() {
-        return customer;
-    }
 
-    public void setCustomer(Customers customer) {
-        this.customer = customer;
-    }
+
 }

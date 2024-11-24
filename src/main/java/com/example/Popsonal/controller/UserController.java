@@ -32,6 +32,17 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody UserResponse userResponse) {
+        System.out.println("로그인 요청: " + userResponse);
+        UserResponse response = customerService.login(userResponse);
+        if (response != null) {
+            return ResponseEntity.ok(response); // 로그인 성공
+        }else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body("Invalid login ID or password"); // 로그인 실패
+        }
+    }
 
 }
 
