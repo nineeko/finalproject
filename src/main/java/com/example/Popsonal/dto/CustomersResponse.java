@@ -8,7 +8,7 @@ import lombok.Setter;
 public class CustomersResponse {
 
     private Long sid;
-    private String loginId;
+    private String cloginId;
     private String name;
     private String phone;
     private String category1;

@@ -39,6 +39,10 @@ public class Customers {
     @Column(name = "C_CATEGORY3", length = 50)
     private String CCategory3;
 
+    // 기본 생성자 추가
+    public Customers() {
+    }
+
     // 로그인용 생성자
     public Customers(String CLoginId, String CPassword) {
         this.CLoginId = CLoginId;

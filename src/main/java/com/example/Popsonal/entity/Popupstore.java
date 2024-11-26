@@ -1,34 +1,39 @@
 package com.example.Popsonal.entity;
-import java.util.Date; // java.util.Date 임포트
 
-import lombok.Getter;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.*;
+import java.util.Date;
 
-@Getter
 @Entity
-
+@NamedQuery(
+        name = "Popupstore.findByPId",
+        query = "SELECT p FROM Popupstore p WHERE p.pId = :pId"
+)
 public class Popupstore {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "popupstore_seq")
+    @SequenceGenerator(name = "popupstore_seq", sequenceName = "popupstore_seq", allocationSize = 1)
     private Long pId;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
 
     @Column(name = "P_NAME", length = 50)
     private String pName;
 
-    @Column(name = "P_LOCATION", length = 50)
+    @Column(name = "category_id")
+    private Number categoryId;
+
+    @Column(name = "P_LOCATION", length = 100)
     private String pLocation;
 
     @Column(name = "P_STARTDATE")
-    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date pStartDate;
 
     @Column(name = "P_ENDDATE")
-    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date pEndDate;
 
     @Column(name = "p_Introduction", length = 500)
@@ -49,8 +54,13 @@ public class Popupstore {
     @Column(name = "p_Parking", length = 11)
     private String pParking;
 
-    // Getters and Setters
+    @Column(name = "P_CATEGORY", length = 50)
+    private String pCategory;
 
+    @Column(name = "P_URL", length = 100)
+    private String pUrl;
+
+    // Getters and Setters
     public Long getPId() {
         return pId;
     }
@@ -58,13 +68,19 @@ public class Popupstore {
     public void setPId(Long pId) {
         this.pId = pId;
     }
-
-    public Category getCategory() {
-        return category;
+    public String getPUrl() {
+        return pUrl;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setPUrl(String pUrl) {
+        this.pUrl = pUrl;
+    }
+    public String getPCategory() {
+        return pCategory;
+    }
+
+    public void setPCategory(String pCategory) {
+        this.pCategory = pCategory;
     }
 
     public String getPName() {
